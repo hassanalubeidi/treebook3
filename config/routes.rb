@@ -1,4 +1,6 @@
 Treebook3::Application.routes.draw do
+  get "profiles/show"
+
   devise_for :users
 
   resources :statuses
