@@ -10,6 +10,19 @@
 	<nav class="navbar navbar-default navbar-static-top" role="navigation">
 	  <div class="container">
 	    <a class="navbar-brand" href="#">Treebook</a>
+      <ul class="nav navbar-nav navbar-right">
+        <% if user_signed_in? %>
+          <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+          <li>
+            <%= link_to current_user.full_name, edit_user_registration_path %>
+          </li>
+        <% else %>
+          <li><%= link_to "Register", new_user_registration_path %></li>
+          <li><%= link_to "Log in", new_user_session_path %></li>
+        <% end %>
+      </ul>
+            
+          
 	    <ul class="nav navbar-nav">
             <li class="active"><%= link_to "Statuses", statuses_path %></li>
             <li><a href="#">Link</a></li>
@@ -24,8 +37,7 @@
                 <li class="divider"></li>
                 <li><a href="#">One more separated link</a></li>
               </ul>
-            </li>
-          </ul>
+
 	  </div>
 	</nav>
 	<div class="container">
